@@ -4,7 +4,6 @@ public class Benzene extends Chemical {
 	
 	public Benzene() {
 		super("Benzene");
-		// this will call the graphic benzene 
 		
 	}
 	public Benzene(String name) {
@@ -14,7 +13,6 @@ public class Benzene extends Chemical {
 	@Override
 	public Chemical optionOne() {
 		// Freidel Crafts
-		System.out.println("returning Methyl");
 		return new Methylbenzene();
 	}
 	@Override
