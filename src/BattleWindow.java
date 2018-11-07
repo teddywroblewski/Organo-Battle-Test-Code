@@ -13,6 +13,11 @@ import BenzeneGroup.Chemical;
 public class BattleWindow extends JFrame {
 
 	private Chemical chemical;
+	private String targetChemical;
+	private Player whoseGettingAttacked;
+	private PlayerOne playerOne;
+	private PlayerTwo playerTwo;
+	
 	
 	private class ReactionButton extends JButton {
 		private int number;
@@ -22,9 +27,24 @@ public class BattleWindow extends JFrame {
 		public int getNumber() {return number; }
 	}
 	
-	public BattleWindow() {
+	public BattleWindow(PlayerOne playerOne, PlayerTwo playerTwo, String targetChemical, boolean whosePlaying) {
+		
+		this.playerOne = playerOne;
+		this.playerTwo = playerTwo;
+		
+		if (whosePlaying) {
+			whoseGettingAttacked = playerTwo;
+			this.playerOne.setTurn(false);
+			this.playerTwo.setTurn(true);
+		} else {
+			whoseGettingAttacked = playerOne;
+			this.playerTwo.setTurn(false);
+			this.playerOne.setTurn(true);
+		}
+		
 		
 		chemical = new Benzene();
+		this.targetChemical = targetChemical;
 		
 		setSize(500,500);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -122,6 +142,17 @@ public class BattleWindow extends JFrame {
 					break;
 			case 4: chemical = chemical.optionFour();
 					break;
+		}
+		if (chemical.isFinal()) {
+			if (chemical.getName().equalsIgnoreCase(targetChemical)) {
+				whoseGettingAttacked.setHealth(whoseGettingAttacked.getHealth() - 10);
+				new SelectionWindow(playerOne, playerTwo).setVisible(true);
+				BattleWindow.this.dispose();
+			}
+			else {
+				new SelectionWindow(playerOne, playerTwo).setVisible(true);
+				BattleWindow.this.dispose();
+			}
 		}
 	}
 	

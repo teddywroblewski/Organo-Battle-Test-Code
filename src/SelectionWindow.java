@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JProgressBar;
 
@@ -15,8 +16,7 @@ public class SelectionWindow extends JFrame {
 	static final int DEFEND = 2;
 	static final int RECHARGE = 3;
 	
-	static int playerOneHealth = 100;
-	static int playerOnePower = 20;
+	Player whoseTurn;
 
 	// need health bars for both players
 	// need power meter
@@ -30,18 +30,25 @@ public class SelectionWindow extends JFrame {
 		public int getSelectionNumber() { return selectionNumber; }
 	}
 	
-	public SelectionWindow() {
+	public SelectionWindow(PlayerOne playerOne, PlayerTwo playerTwo) {
+		if (playerOne.isTurn()) {
+			whoseTurn = playerOne;
+		} else {
+			whoseTurn = playerTwo;
+		}
 		
 		setSize(500,500);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		setLayout(null);
 		
+		JOptionPane.showMessageDialog(this, whoseTurn.getName());
+		
 		JProgressBar health = new JProgressBar();
 		health.setStringPainted(true);
 		health.setString("Health");
 		health.setForeground(new Color(255,0,0));
-		health.setValue(playerOneHealth);
+		health.setValue(whoseTurn.getHealth());
 		health.setMaximum(100);
 		health.setMinimum(0);
 		health.setBounds(50, 10, 400, 25);
@@ -51,7 +58,7 @@ public class SelectionWindow extends JFrame {
 		power.setStringPainted(true);
 		power.setString("Power");
 		power.setForeground(new Color(255, 255, 0));
-		power.setValue(playerOnePower);
+		power.setValue(whoseTurn.getPower());
 		power.setMaximum(20);
 		power.setMinimum(0);
 		power.setBounds(50, 250, 400, 25);
@@ -73,7 +80,7 @@ public class SelectionWindow extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// Take to Benzene attack window
-						BattleWindow bw = new BattleWindow();
+						BattleWindow bw = new BattleWindow(playerOne, playerTwo, "trinitrotoluene", playerOne.isTurn());
 						bw.setVisible(true);
 						SelectionWindow.this.dispose();
 
@@ -105,4 +112,5 @@ public class SelectionWindow extends JFrame {
 		add(attack);
 		add(defend);
 	}
+	
 }

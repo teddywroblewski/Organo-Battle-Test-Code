@@ -3,11 +3,11 @@ package BenzeneGroup;
 public class PhenylmagnesiumBromide extends Bromobenzene {
 
 	public PhenylmagnesiumBromide() {
-		super("PhenylmagnesiumBromide");
+		super("PhenylmagnesiumBromide", false);
 	}
 	
-	public PhenylmagnesiumBromide(String name) {
-		super(name);
+	public PhenylmagnesiumBromide(String name, boolean isFinal) {
+		super(name, isFinal);
 	}
 	
 	@Override

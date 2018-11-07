@@ -3,6 +3,6 @@ package BenzeneGroup;
 public class PXylene extends Methylbenzene {
 
 	public PXylene() {
-		super("p-Xylene");
+		super("p-Xylene", true);
 	}
 }

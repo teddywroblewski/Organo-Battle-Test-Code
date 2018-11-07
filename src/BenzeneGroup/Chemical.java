@@ -3,9 +3,11 @@ package BenzeneGroup;
 
 public abstract class Chemical {
 	private String chemical;
+	private boolean isFinal;
 	
-	public Chemical (String chemical) {
+	public Chemical (String chemical, boolean isFinal) {
 		this.chemical = chemical; 
+		this.isFinal = isFinal;
 	}
 	
 	public abstract Chemical optionOne();
@@ -19,4 +21,6 @@ public abstract class Chemical {
 	public abstract String textOptionTwo();
 	public abstract String textOptionThree();
 	public abstract String textOptionFour();
+	
+	public boolean isFinal() { return isFinal; }
 }
