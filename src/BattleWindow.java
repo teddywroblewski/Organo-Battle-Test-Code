@@ -146,11 +146,12 @@ public class BattleWindow extends JFrame {
 		if (chemical.isFinal()) {
 			if (chemical.getName().equalsIgnoreCase(targetChemical)) {
 				whoseGettingAttacked.setHealth(whoseGettingAttacked.getHealth() - 10);
-				
 				new SelectionWindow(playerOne, playerTwo).setVisible(true);
+				BattleWindow.this.dispose();
 			}
 			else {
-				
+				new SelectionWindow(playerOne, playerTwo).setVisible(true);
+				BattleWindow.this.dispose();
 			}
 		}
 	}
