@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import BenzeneGroup.Benzene;
 import BenzeneGroup.Chemical;
@@ -15,6 +16,7 @@ public class BattleWindow extends JFrame {
 	private Chemical chemical;
 	private String targetChemical;
 	private Player whoseGettingAttacked;
+	private Player whoseTurn;
 	private PlayerOne playerOne;
 	private PlayerTwo playerTwo;
 	
@@ -34,10 +36,12 @@ public class BattleWindow extends JFrame {
 		
 		if (whosePlaying) {
 			whoseGettingAttacked = playerTwo;
+			whoseTurn = playerOne;
 			this.playerOne.setTurn(false);
 			this.playerTwo.setTurn(true);
 		} else {
 			whoseGettingAttacked = playerOne;
+			whoseTurn = playerTwo;
 			this.playerTwo.setTurn(false);
 			this.playerOne.setTurn(true);
 		}
@@ -92,6 +96,7 @@ public class BattleWindow extends JFrame {
 				reactionThree.setText(chemical.textOptionThree());
 				reactionFour.setText(chemical.textOptionFour());
 				chemicalName.setText(chemical.getName());
+				
 			}
 		});
 		
@@ -135,21 +140,27 @@ public class BattleWindow extends JFrame {
 	private void clickedUpon(int action) {
 		switch (action) {
 			case 1: chemical = chemical.optionOne();
+					whoseTurn.setPower(whoseTurn.getPower() - 1);
 					break;
 			case 2: chemical = chemical.optionTwo();
+					whoseTurn.setPower(whoseTurn.getPower() - 1);
 					break;
 			case 3: chemical = chemical.optionThree();
+					whoseTurn.setPower(whoseTurn.getPower() - 1);
 					break;
 			case 4: chemical = chemical.optionFour();
+					whoseTurn.setPower(whoseTurn.getPower() - 1);
 					break;
 		}
 		if (chemical.isFinal()) {
 			if (chemical.getName().equalsIgnoreCase(targetChemical)) {
+				JOptionPane.showMessageDialog(this, "Successfully made " + chemical.getName());
 				whoseGettingAttacked.setHealth(whoseGettingAttacked.getHealth() - 10);
 				new SelectionWindow(playerOne, playerTwo).setVisible(true);
 				BattleWindow.this.dispose();
 			}
 			else {
+				JOptionPane.showMessageDialog(this, "Did not make " + targetChemical + " made " + chemical.getName());
 				new SelectionWindow(playerOne, playerTwo).setVisible(true);
 				BattleWindow.this.dispose();
 			}
