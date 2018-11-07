@@ -48,7 +48,6 @@ public class BattleWindow extends JFrame {
 		reactionOne.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("clicked");
 				clickedUpon(((ReactionButton) e.getSource()).getNumber());
 				reactionOne.setText(chemical.textOptionOne());
 				reactionTwo.setText(chemical.textOptionTwo());
@@ -67,7 +66,6 @@ public class BattleWindow extends JFrame {
 		reactionTwo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("clicked");
 				clickedUpon(((ReactionButton) e.getSource()).getNumber());
 				reactionOne.setText(chemical.textOptionOne());
 				reactionTwo.setText(chemical.textOptionTwo());
@@ -85,7 +83,6 @@ public class BattleWindow extends JFrame {
 		reactionThree.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("clicked");
 				clickedUpon(((ReactionButton) e.getSource()).getNumber());
 				reactionOne.setText(chemical.textOptionOne());
 				reactionTwo.setText(chemical.textOptionTwo());
@@ -103,7 +100,6 @@ public class BattleWindow extends JFrame {
 		reactionFour.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("clicked");
 				clickedUpon(((ReactionButton) e.getSource()).getNumber());
 				reactionOne.setText(chemical.textOptionOne());
 				reactionTwo.setText(chemical.textOptionTwo());
@@ -127,10 +123,6 @@ public class BattleWindow extends JFrame {
 			case 4: chemical = chemical.optionFour();
 					break;
 		}
-	}
-	
-	private void chemcialCheck(Chemical chemical) {
-		
 	}
 	
 	
