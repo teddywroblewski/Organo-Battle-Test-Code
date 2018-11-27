@@ -1,3 +1,6 @@
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,6 +22,8 @@ public class BattleWindow extends JFrame {
 	private Player whoseTurn;
 	private PlayerOne playerOne;
 	private PlayerTwo playerTwo;
+	private int width;
+	private int height;
 	
 	
 	private class ReactionButton extends JButton {
@@ -33,6 +38,10 @@ public class BattleWindow extends JFrame {
 		
 		this.playerOne = playerOne;
 		this.playerTwo = playerTwo;
+		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		width = (int)screenSize.getWidth() / 2;
+		height = (int)(screenSize.getHeight() / 1.2);
 		
 		if (whosePlaying) {
 			whoseGettingAttacked = playerTwo;
@@ -50,7 +59,7 @@ public class BattleWindow extends JFrame {
 		chemical = new Benzene();
 		this.targetChemical = targetChemical;
 		
-		setSize(500,500);
+		setSize(width, height);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		setLayout(null);
@@ -58,7 +67,7 @@ public class BattleWindow extends JFrame {
 		// placeholder for picture
 		JLabel chemicalName = new JLabel();
 		chemicalName.setText(chemical.getName());
-		chemicalName.setBounds(200, 200, 200, 100);
+		chemicalName.setBounds(width/2 - width/6, height/2 - height/10, width/3, height/5);
 		add(chemicalName);
 		
 		ReactionButton reactionOne = new ReactionButton(1);
@@ -67,8 +76,9 @@ public class BattleWindow extends JFrame {
 		ReactionButton reactionFour = new ReactionButton(4);
 		
 		//First Reaction Button
-		reactionOne.setBounds(10, 400, 100, 30);
+		reactionOne.setBounds(10, (int)height-100, (int)width/5, (int)height/15);
 		reactionOne.setText(chemical.textOptionOne());
+		reactionOne.setFont(new Font("Arial", Font.PLAIN, 12));
 		reactionOne.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -85,7 +95,7 @@ public class BattleWindow extends JFrame {
 		
 		//Second Reaction Button
 		
-		reactionTwo.setBounds(100, 400, 100, 30);
+		reactionTwo.setBounds((int)width/4 + 10, (int)height-100, (int)width/5, (int)height/15);
 		reactionTwo.setText(chemical.textOptionTwo());
 		reactionTwo.addActionListener(new ActionListener() {
 			@Override
@@ -103,7 +113,7 @@ public class BattleWindow extends JFrame {
 		add(reactionTwo);
 		
 		//Third Reaction Button
-		reactionThree.setBounds(200, 400, 100, 30);
+		reactionThree.setBounds((int)(2*(width/4)) + 10, (int)height-100, (int)width/5, (int)height/15);
 		reactionThree.setText(chemical.textOptionThree());
 		reactionThree.addActionListener(new ActionListener() {
 			@Override
@@ -120,7 +130,7 @@ public class BattleWindow extends JFrame {
 		add(reactionThree);
 		
 		//Fourth Reaction Button
-		reactionFour.setBounds(300, 400, 100, 30);
+		reactionFour.setBounds((int)(3*(width/4)) + 10, (int)height-100, (int)width/5, (int)height/15);
 		reactionFour.setText(chemical.textOptionFour());
 		reactionFour.addActionListener(new ActionListener() {
 			@Override
