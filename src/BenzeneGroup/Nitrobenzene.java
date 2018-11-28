@@ -3,11 +3,11 @@ package BenzeneGroup;
 public class Nitrobenzene extends Benzene {
 
 	public Nitrobenzene() {
-		super("Nitrobenzene", false); 
+		super("Nitrobenzene", false, "12.jpeg"); 
 		
 	}
-	public Nitrobenzene(String name, boolean isFinal) {
-		super(name, isFinal);
+	public Nitrobenzene(String name, boolean isFinal, String pictureFile) {
+		super(name, isFinal, pictureFile);
 	}
 	
 	@Override

@@ -3,6 +3,6 @@ package BenzeneGroup;
 public class PBromotoluene extends Bromobenzene {
 
 	public PBromotoluene() {
-		super("p-Bromotoluene", true);
+		super("p-Bromotoluene", true, "13.jpeg");
 	}
 }

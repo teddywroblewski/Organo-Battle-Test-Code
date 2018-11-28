@@ -3,10 +3,10 @@ package BenzeneGroup;
 public class Methylbenzene extends Benzene {
 	
 	public Methylbenzene() {
-		super("Methylbenzene", false);
+		super("Methylbenzene", false, "10.jpeg");
 	}
-	public Methylbenzene(String name, boolean isFinal) {
-		super(name, isFinal);
+	public Methylbenzene(String name, boolean isFinal, String pictureFile) {
+		super(name, isFinal, pictureFile);
 	}
 	
 	@Override

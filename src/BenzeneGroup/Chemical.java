@@ -4,10 +4,13 @@ package BenzeneGroup;
 public abstract class Chemical {
 	private String chemical;
 	private boolean isFinal;
+	private String pictureFile;
 	
-	public Chemical (String chemical, boolean isFinal) {
+	public Chemical (String chemical, boolean isFinal, String pictureFile) {
 		this.chemical = chemical; 
 		this.isFinal = isFinal;
+		this.pictureFile = pictureFile;
+		
 	}
 	
 	public abstract Chemical optionOne();
@@ -16,6 +19,8 @@ public abstract class Chemical {
 	public abstract Chemical optionFour();
 	
 	public String getName() { return chemical; }
+	
+	public String getFile() { return pictureFile; }
 	
 	public abstract String textOptionOne();
 	public abstract String textOptionTwo();

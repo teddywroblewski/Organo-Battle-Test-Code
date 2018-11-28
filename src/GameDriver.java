@@ -11,9 +11,6 @@ public class GameDriver {
 		SelectionWindow sw = new SelectionWindow(playerOne, playerTwo);
 		sw.setVisible(true);
 		
-		System.out.println("Test");
-		//Test
-		
 	}
 
 }

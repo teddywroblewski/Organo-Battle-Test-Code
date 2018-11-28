@@ -1,11 +1,15 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
@@ -22,6 +26,7 @@ public class SelectionWindow extends JFrame {
 	private int height;
 	
 	Player whoseTurn;
+	
 
 	// need health bars for both players
 	// need power meter
@@ -42,6 +47,7 @@ public class SelectionWindow extends JFrame {
 			whoseTurn = playerTwo;
 		}
 		
+		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		width = (int)screenSize.getWidth() / 2;
 		height = (int)(screenSize.getHeight() / 1.2);
@@ -51,8 +57,19 @@ public class SelectionWindow extends JFrame {
 		
 		setLayout(null);
 		
+		//This is for background image
+		ImageIcon background = new ImageIcon("CGB.jpeg");
+		Image bg = background.getImage();
+		Image temp = bg.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH);
+		background = new ImageIcon(temp);  // transform it back
+        JLabel backgroundImage = new JLabel(background);
+        backgroundImage.setLocation(width/2, height/2);
+        backgroundImage.setBounds(0, 0, width, height);	
+        
 		JOptionPane.showMessageDialog(this, whoseTurn.getName());
 		
+		
+		//This is for the health bar
 		JProgressBar health = new JProgressBar();
 		health.setStringPainted(true);
 		health.setString("Health");
@@ -60,9 +77,10 @@ public class SelectionWindow extends JFrame {
 		health.setValue(whoseTurn.getHealth());
 		health.setMaximum(100);
 		health.setMinimum(0);
-		health.setBounds(50, 10, width - 100, height/20);
+		health.setBounds(40, 10, width/3, height/20);
 		add(health);
 		
+		//This is for power bar
 		JProgressBar power = new JProgressBar();
 		power.setStringPainted(true);
 		power.setString("Power");
@@ -70,21 +88,24 @@ public class SelectionWindow extends JFrame {
 		power.setValue(whoseTurn.getPower());
 		power.setMaximum(20);
 		power.setMinimum(0);
-		power.setBounds(50, height/2, width - 100, height/20);
+		power.setBounds((width/2)+20, 10, width/3, height/20);
 		add(power);
 		
 		SelectionButton attack = new SelectionButton(ATTACK);
 		SelectionButton defend = new SelectionButton(DEFEND);
 		
-		attack.setBounds(10, 3*(height/4), width/5, height/6);
-		attack.setText("Attack");
+		attack.setBounds(80, 3*(height/4), width/4, height/6);
+		attack.setFont(new Font("Arial", Font.BOLD, 30));
+		attack.setText("ATTACK");
 		attack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// open attack window 
 				JPopupMenu attackMenu = new JPopupMenu("Attack");
 				JMenuItem benzene = new JMenuItem("Benzene Start");
+				JMenuItem scheme2 = new JMenuItem("Scheme 2");
 				attackMenu.add(benzene);
+				attackMenu.add(scheme2);
 				benzene.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -99,8 +120,9 @@ public class SelectionWindow extends JFrame {
 			}	
 		});
 		
-		defend.setBounds(4*(width/5) - 10, 3*(height/4), width/5, height/6);
-		defend.setText("Defend");
+		defend.setBounds(4*(width/5) - 80, 3*(height/4), width/4, height/6);
+		defend.setFont(new Font("Arial", Font.BOLD, 30));
+		defend.setText("DEFEND");
 		defend.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -120,6 +142,7 @@ public class SelectionWindow extends JFrame {
 		
 		add(attack);
 		add(defend);
+		add(backgroundImage);
 	}
 	
 }

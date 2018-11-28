@@ -3,11 +3,11 @@ package BenzeneGroup;
 public class Bromobenzene extends Benzene {
 	
 	public Bromobenzene() {
-		super("Bromobenzene", false);
+		super("Bromobenzene", false, "6.jpeg");
 	}
 	
-	public Bromobenzene(String name, boolean isFinal) {
-		super(name, isFinal);
+	public Bromobenzene(String name, boolean isFinal, String pictureFile) {
+		super(name, isFinal, pictureFile);
 	}
 	
 	@Override
