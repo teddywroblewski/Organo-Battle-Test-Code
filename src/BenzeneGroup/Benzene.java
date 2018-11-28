@@ -3,11 +3,11 @@ package BenzeneGroup;
 public class Benzene extends Chemical {
 	
 	public Benzene() {
-		super("Benzene", false);
+		super("Benzene", false, "3.jpeg");
 		
 	}
-	public Benzene(String name, boolean isFinal) {
-		super(name, isFinal);
+	public Benzene(String name, boolean isFinal, String pictureFile) {
+		super(name, isFinal, pictureFile);
 	}
 	
 	@Override

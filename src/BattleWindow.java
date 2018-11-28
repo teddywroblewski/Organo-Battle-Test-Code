@@ -1,9 +1,11 @@
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,6 +26,7 @@ public class BattleWindow extends JFrame {
 	private PlayerTwo playerTwo;
 	private int width;
 	private int height;
+	private Image molecule;
 	
 	
 	private class ReactionButton extends JButton {
@@ -64,8 +67,13 @@ public class BattleWindow extends JFrame {
 		
 		setLayout(null);
 		
-		// placeholder for picture
-		JLabel chemicalName = new JLabel();
+		//Implementing the first image and text 
+		
+		ImageIcon chemicalPic = new ImageIcon(chemical.getFile());
+		Image chemImage = chemicalPic.getImage();
+		Image temp = chemImage.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);
+		chemicalPic = new ImageIcon(temp);
+        JLabel chemicalName = new JLabel(chemicalPic);
 		chemicalName.setText(chemical.getName());
 		chemicalName.setBounds(width/2 - width/6, height/2 - height/10, width/3, height/5);
 		add(chemicalName);
@@ -88,6 +96,15 @@ public class BattleWindow extends JFrame {
 				reactionThree.setText(chemical.textOptionThree());
 				reactionFour.setText(chemical.textOptionFour());
 				chemicalName.setText(chemical.getName());
+				
+				//This is for the image
+				ImageIcon chemicalPic1 = new ImageIcon(chemical.getFile());
+				Image chemImage = chemicalPic1.getImage();
+				Image temp = chemImage.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);
+				chemicalPic1 = new ImageIcon(temp);
+				
+				chemicalName.setIcon(chemicalPic1);
+				
 			}
 		});
 		
@@ -107,6 +124,13 @@ public class BattleWindow extends JFrame {
 				reactionFour.setText(chemical.textOptionFour());
 				chemicalName.setText(chemical.getName());
 				
+				ImageIcon chemicalPic2 = new ImageIcon(chemical.getFile());
+				Image chemImage = chemicalPic2.getImage();
+				Image temp = chemImage.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);
+				chemicalPic2 = new ImageIcon(temp);
+				
+				chemicalName.setIcon(chemicalPic2);
+				
 			}
 		});
 		
@@ -124,6 +148,13 @@ public class BattleWindow extends JFrame {
 				reactionThree.setText(chemical.textOptionThree());
 				reactionFour.setText(chemical.textOptionFour());
 				chemicalName.setText(chemical.getName());
+				
+				ImageIcon chemicalPic3 = new ImageIcon(chemical.getFile());
+				Image chemImage = chemicalPic3.getImage();
+				Image temp = chemImage.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);
+				chemicalPic3 = new ImageIcon(temp);
+				
+				chemicalName.setIcon(chemicalPic3);
 			}
 		});
 		
@@ -141,6 +172,13 @@ public class BattleWindow extends JFrame {
 				reactionThree.setText(chemical.textOptionThree());
 				reactionFour.setText(chemical.textOptionFour());
 				chemicalName.setText(chemical.getName());
+				
+				ImageIcon chemicalPic4 = new ImageIcon(chemical.getFile());
+				Image chemImage = chemicalPic4.getImage();
+				Image temp = chemImage.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);
+				chemicalPic4 = new ImageIcon(temp);
+				
+				chemicalName.setIcon(chemicalPic4);
 			}
 		});
 		

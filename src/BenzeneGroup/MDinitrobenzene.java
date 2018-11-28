@@ -3,7 +3,7 @@ package BenzeneGroup;
 public class MDinitrobenzene extends Nitrobenzene {
 
 	public MDinitrobenzene() {
-		super("m-Dinitrobenzene", true);
+		super("m-Dinitrobenzene", true, "8.jpeg");
 	}
 
 
