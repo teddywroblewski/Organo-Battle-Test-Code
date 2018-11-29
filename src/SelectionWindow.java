@@ -27,11 +27,6 @@ public class SelectionWindow extends JFrame {
 	
 	Player whoseTurn;
 	
-
-	// need health bars for both players
-	// need power meter
-	// need buttons to select action
-	
 	private class SelectionButton extends JButton {
 		private int selectionNumber;
 		public SelectionButton(int selectionNumber) {
