@@ -111,7 +111,9 @@ public class SelectionWindow extends JFrame {
 
 					}	
 				});
-				attackMenu.show(SelectionWindow.this, 250, 250);
+				attackMenu.setSize(width/5, height/5);
+				attackMenu.show(SelectionWindow.this, width/2, height/2);
+				
 			}	
 		});
 		
@@ -131,7 +133,7 @@ public class SelectionWindow extends JFrame {
 						// Open defend chemical window	
 					}
 				});
-				defendMenu.show(SelectionWindow.this, 250,250);
+				defendMenu.show(SelectionWindow.this, width/2, height/2);
 			}
 		});
 		
