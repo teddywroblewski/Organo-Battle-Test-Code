@@ -27,11 +27,6 @@ public class SelectionWindow extends JFrame {
 	
 	Player whoseTurn;
 	
-
-	// need health bars for both players
-	// need power meter
-	// need buttons to select action
-	
 	private class SelectionButton extends JButton {
 		private int selectionNumber;
 		public SelectionButton(int selectionNumber) {
@@ -55,6 +50,8 @@ public class SelectionWindow extends JFrame {
 		setSize(width, height);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
+		setLocation(screenSize.width/2-getSize().width/2, screenSize.height/2-getSize().height/2);
+		
 		setLayout(null);
 		
 		//This is for background image
@@ -77,7 +74,7 @@ public class SelectionWindow extends JFrame {
 		health.setValue(whoseTurn.getHealth());
 		health.setMaximum(100);
 		health.setMinimum(0);
-		health.setBounds(40, 10, width/3, height/20);
+		health.setBounds(40, 10, width/3, height/10);
 		add(health);
 		
 		//This is for power bar
@@ -88,7 +85,7 @@ public class SelectionWindow extends JFrame {
 		power.setValue(whoseTurn.getPower());
 		power.setMaximum(20);
 		power.setMinimum(0);
-		power.setBounds((width/2)+20, 10, width/3, height/20);
+		power.setBounds((width/2)+20, 10, width/3, height/10);
 		add(power);
 		
 		SelectionButton attack = new SelectionButton(ATTACK);
@@ -116,7 +113,9 @@ public class SelectionWindow extends JFrame {
 
 					}	
 				});
-				attackMenu.show(SelectionWindow.this, 250, 250);
+				attackMenu.setSize(width/5, height/5);
+				attackMenu.show(SelectionWindow.this, width/2, height/2);
+				
 			}	
 		});
 		
@@ -136,7 +135,7 @@ public class SelectionWindow extends JFrame {
 						// Open defend chemical window	
 					}
 				});
-				defendMenu.show(SelectionWindow.this, 250,250);
+				defendMenu.show(SelectionWindow.this, width/2, height/2);
 			}
 		});
 		
