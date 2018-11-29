@@ -202,13 +202,26 @@ public class BattleWindow extends JFrame {
 		}
 		if (chemical.isFinal()) {
 			if (chemical.getName().equalsIgnoreCase(targetChemical)) {
-				JOptionPane.showMessageDialog(this, "Successfully made " + chemical.getName());
+				
+				ImageIcon chemicalPicFinal = new ImageIcon(chemical.getFile());
+				Image chemImage = chemicalPicFinal.getImage();
+				Image temp = chemImage.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);
+				chemicalPicFinal = new ImageIcon(temp);
+				
+				JOptionPane.showMessageDialog(this, "Sucessfully made " + chemical.getName(), "Sucess", JOptionPane.INFORMATION_MESSAGE, chemicalPicFinal);
+				
 				whoseGettingAttacked.setHealth(whoseGettingAttacked.getHealth() - 10);
 				new SelectionWindow(playerOne, playerTwo).setVisible(true);
 				BattleWindow.this.dispose();
 			}
 			else {
-				JOptionPane.showMessageDialog(this, "Did not make " + targetChemical + " made " + chemical.getName());
+				
+				ImageIcon chemicalPicFinal = new ImageIcon(chemical.getFile());
+				Image chemImage = chemicalPicFinal.getImage();
+				Image temp = chemImage.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);
+				chemicalPicFinal = new ImageIcon(temp);
+				
+				JOptionPane.showMessageDialog(this, "Failed to make target chemical, made  " + chemical.getName(), "Failed", JOptionPane.INFORMATION_MESSAGE, chemicalPicFinal);
 				new SelectionWindow(playerOne, playerTwo).setVisible(true);
 				BattleWindow.this.dispose();
 			}
