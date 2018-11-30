@@ -18,12 +18,9 @@ public class OpeningWindow extends JFrame {
 
 	private int width;
 	private int height;
-	private boolean cont = true;
 
-	public OpeningWindow() {
-		
-		
-		
+	public OpeningWindow(PlayerOne playerOne, PlayerTwo playerTwo) {
+
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		width = (int)screenSize.getWidth() / 2;
 		height = (int)(screenSize.getHeight() / 1.2);
@@ -31,18 +28,18 @@ public class OpeningWindow extends JFrame {
 		setLocation(screenSize.width/2-getSize().width/2, screenSize.height/2-getSize().height/2);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLayout(null);
-		
+
 		//Background Image
 		//getContentPane().setBackground(Color.YELLOW);
-	
+
 		//Logo
 		JLabel title = new JLabel();
 		title.setText("ORGANOBATTLE");
 		title.setFont(new Font("Arial", Font.BOLD, 30));
 		title.setBounds(width/2 - width/6, height/2 - height/10, width, height);
-		
+
 		add(title);
-		
+
 		//Menu
 		JButton start = new JButton();
 		start.setBounds(80, 3*(height/4), width/4, height/6);
@@ -51,14 +48,14 @@ public class OpeningWindow extends JFrame {
 		start.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				SelectionWindow sw = new SelectionWindow(playerOne, playerTwo);
+				sw.setVisible(true);
 				OpeningWindow.this.dispose();
-				cont = false;
 			}
-		
-		
-	});
+
+
+		});
 		add(start);
-		//while(cont);
-	
-}
+
+	}
 }
