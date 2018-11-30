@@ -11,7 +11,9 @@ import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.JProgressBar;
 
-
+//WORKING ON AN OPENING WHICH WITH HAVE THE LOGO AS WELL AS A BUTTON TO START, 
+//MAYBE SOUND TOO...AT THE MOMENT, IT IS HARD TO GET THE START BUTTON TO WORK AS
+//I WANT
 public class OpeningWindow extends JFrame {
 
 	private int width;

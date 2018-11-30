@@ -6,8 +6,8 @@ public class GameDriver {
 		int power = 20;
 		boolean gameWon = false;
 		
-		OpeningWindow ow = new OpeningWindow();
-		ow.setVisible(true);
+		//OpeningWindow ow = new OpeningWindow();
+		//ow.setVisible(true);
 	
 		PlayerOne playerOne = new PlayerOne(health, power, true, "Player One");
 		PlayerTwo playerTwo = new PlayerTwo(health, power, false, "Player Two");
