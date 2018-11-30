@@ -50,6 +50,8 @@ public class SelectionWindow extends JFrame {
 		setSize(width, height);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
+		setLocation(screenSize.width/2-getSize().width/2, screenSize.height/2-getSize().height/2);
+		
 		setLayout(null);
 		
 		//This is for background image
@@ -72,7 +74,7 @@ public class SelectionWindow extends JFrame {
 		health.setValue(whoseTurn.getHealth());
 		health.setMaximum(100);
 		health.setMinimum(0);
-		health.setBounds(40, 10, width/3, height/20);
+		health.setBounds(40, 10, width/3, height/10);
 		add(health);
 		
 		//This is for power bar
@@ -83,7 +85,7 @@ public class SelectionWindow extends JFrame {
 		power.setValue(whoseTurn.getPower());
 		power.setMaximum(20);
 		power.setMinimum(0);
-		power.setBounds((width/2)+20, 10, width/3, height/20);
+		power.setBounds((width/2)+20, 10, width/3, height/10);
 		add(power);
 		
 		SelectionButton attack = new SelectionButton(ATTACK);
