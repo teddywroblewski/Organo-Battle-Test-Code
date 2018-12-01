@@ -28,4 +28,12 @@ public abstract class Chemical {
 	public abstract String textOptionFour();
 	
 	public boolean isFinal() { return isFinal; }
+	
+	public static Chemical getStartingChemical(String startingChemical) {
+		if (startingChemical.equals("Benzene")) {
+			return new Benzene();
+		}
+		
+		return null;
+	}
 }

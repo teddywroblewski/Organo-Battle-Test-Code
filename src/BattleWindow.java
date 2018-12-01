@@ -37,7 +37,7 @@ public class BattleWindow extends JFrame {
 		public int getNumber() {return number; }
 	}
 	
-	public BattleWindow(PlayerOne playerOne, PlayerTwo playerTwo, String targetChemical, boolean whosePlaying) {
+	public BattleWindow(PlayerOne playerOne, PlayerTwo playerTwo, String targetChemical, boolean whosePlaying, Chemical startChemical) {
 		
 		this.playerOne = playerOne;
 		this.playerTwo = playerTwo;
@@ -59,7 +59,7 @@ public class BattleWindow extends JFrame {
 		}
 		
 		
-		chemical = new Benzene();
+		chemical = startChemical;
 		this.targetChemical = targetChemical;
 		
 		setSize(width, height);
