@@ -1,4 +1,4 @@
-package BenzeneGroup;
+package benzeneGroup_1;
 
 public class Nitrobenzene extends Benzene {
 

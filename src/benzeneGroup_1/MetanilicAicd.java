@@ -1,4 +1,4 @@
-package BenzeneGroup;
+package benzeneGroup_1;
 
 public class MetanilicAicd extends Nitrobenzene {
 

@@ -4,31 +4,30 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import benzeneGroup_1.Benzene;
+import benzeneGroup_1.Chemical;
 
-import BenzeneGroup.Benzene;
-import BenzeneGroup.Chemical;
+//This class is for the molecule building window. FOP, we will reference as "Battle Window"
 
-// have every reaction available to click, however if click one that does not work, fail and give error message
-// this allows us to keep only one window open 
 public class BattleWindow extends JFrame {
 
+	//Variables
 	private Chemical chemical;
 	private String targetChemical;
-	private Player whoseGettingAttacked;
-	private Player whoseTurn;
+	private Player whoAttacks;
+	private Player whoReceives;
 	private PlayerOne playerOne;
 	private PlayerTwo playerTwo;
 	private int width;
 	private int height;
 	private Image molecule;
 	
-	
+	//Class that makes "reaction button"
 	private class ReactionButton extends JButton {
 		private int number;
 		public ReactionButton(int number) {
@@ -37,38 +36,46 @@ public class BattleWindow extends JFrame {
 		public int getNumber() {return number; }
 	}
 	
-	public BattleWindow(PlayerOne playerOne, PlayerTwo playerTwo, String targetChemical, boolean whosePlaying) {
+	//Constructor
+	public BattleWindow(PlayerOne playerOne, PlayerTwo playerTwo, String targetChemical, boolean whosePlaying, int groupNumber) {
 		
 		this.playerOne = playerOne;
 		this.playerTwo = playerTwo;
 		
+		//Sets up JFrame Container
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		width = (int)screenSize.getWidth() / 2;
 		height = (int)(screenSize.getHeight() / 1.2);
+		setSize(width, height);	
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocation(screenSize.width/2-getSize().width/2, screenSize.height/2-getSize().height/2);
+		setLayout(null);
 		
+		//Changes player for next turn
 		if (whosePlaying) {
-			whoseGettingAttacked = playerTwo;
-			whoseTurn = playerOne;
+			whoAttacks = playerTwo;
+			whoReceives = playerOne;
 			this.playerOne.setTurn(false);
 			this.playerTwo.setTurn(true);
 		} else {
-			whoseGettingAttacked = playerOne;
-			whoseTurn = playerTwo;
+			whoAttacks = playerOne;
+			whoReceives = playerTwo;
 			this.playerTwo.setTurn(false);
 			this.playerOne.setTurn(true);
 		}
 		
+		//Sets the chemical group and target molecule
+		switch (groupNumber) {
+			case 1: chemical = new Benzene();
+					break;
+//			case 2: chemical = new //Set up for next chemical group
+//					break;
+	
+		}
 		
-		chemical = new Benzene();
 		this.targetChemical = targetChemical;
 		
-		setSize(width, height);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		
-		setLayout(null);
-		
 		//Implementing the first image and text 
-		
 		ImageIcon chemicalPic = new ImageIcon(chemical.getFile());
 		Image chemImage = chemicalPic.getImage();
 		Image temp = chemImage.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);
@@ -77,6 +84,7 @@ public class BattleWindow extends JFrame {
 		chemicalName.setText(chemical.getName());
 		chemicalName.setBounds(width/2 - width/6, height/2 - height/10, width/3, height/5);
 		add(chemicalName);
+		
 		
 		ReactionButton reactionOne = new ReactionButton(1);
 		ReactionButton reactionTwo = new ReactionButton(2);
@@ -111,7 +119,6 @@ public class BattleWindow extends JFrame {
 		add(reactionOne);
 		
 		//Second Reaction Button
-		
 		reactionTwo.setBounds((int)width/4 + 10, (int)height-100, (int)width/5, (int)height/15);
 		reactionTwo.setText(chemical.textOptionTwo());
 		reactionTwo.addActionListener(new ActionListener() {
@@ -185,19 +192,20 @@ public class BattleWindow extends JFrame {
 		add(reactionFour);
 	}
 	
+	//Clicked Method
 	private void clickedUpon(int action) {
 		switch (action) {
 			case 1: chemical = chemical.optionOne();
-					whoseTurn.setPower(whoseTurn.getPower() - 1);
+					whoReceives.setPower(whoReceives.getPower() - 1);
 					break;
 			case 2: chemical = chemical.optionTwo();
-					whoseTurn.setPower(whoseTurn.getPower() - 1);
+					whoReceives.setPower(whoReceives.getPower() - 1);
 					break;
 			case 3: chemical = chemical.optionThree();
-					whoseTurn.setPower(whoseTurn.getPower() - 1);
+					whoReceives.setPower(whoReceives.getPower() - 1);
 					break;
 			case 4: chemical = chemical.optionFour();
-					whoseTurn.setPower(whoseTurn.getPower() - 1);
+					whoReceives.setPower(whoReceives.getPower() - 1);
 					break;
 		}
 		if (chemical.isFinal()) {
@@ -210,7 +218,7 @@ public class BattleWindow extends JFrame {
 				
 				JOptionPane.showMessageDialog(this, "Sucessfully made " + chemical.getName(), "Sucess", JOptionPane.INFORMATION_MESSAGE, chemicalPicFinal);
 				
-				whoseGettingAttacked.setHealth(whoseGettingAttacked.getHealth() - 10);
+				whoAttacks.setHealth(whoAttacks.getHealth() - 10);
 				new SelectionWindow(playerOne, playerTwo).setVisible(true);
 				BattleWindow.this.dispose();
 			}
@@ -227,6 +235,5 @@ public class BattleWindow extends JFrame {
 			}
 		}
 	}
-	
-	
+		
 }

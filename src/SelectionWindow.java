@@ -5,7 +5,6 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,43 +14,50 @@ import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JProgressBar;
 
-
+//This class is for the main game play window
 public class SelectionWindow extends JFrame {
 	
+	//Variables
 	static final int ATTACK = 1;
 	static final int DEFEND = 2;
 	static final int RECHARGE = 3;
-	
 	private int width;
 	private int height;
-	
 	Player whoseTurn;
+	Moves move = new Moves();
 	
+	//Selection button class
 	private class SelectionButton extends JButton {
+		
+		//Variables
+		private static final long serialVersionUID = 1L;
 		private int selectionNumber;
+		
+		//Selection Number 
 		public SelectionButton(int selectionNumber) {
 			this.selectionNumber = selectionNumber;
 		}
+		
+		//Selection Number getter
 		public int getSelectionNumber() { return selectionNumber; }
-	}
+		}
 	
+	//Constructor
 	public SelectionWindow(PlayerOne playerOne, PlayerTwo playerTwo) {
+		
+		//Determines who's turn
 		if (playerOne.isTurn()) {
 			whoseTurn = playerOne;
 		} else {
-			whoseTurn = playerTwo;
-		}
+			whoseTurn = playerTwo;}
 		
-		
+		//Sets up JFrame Window
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		width = (int)screenSize.getWidth() / 2;
 		height = (int)(screenSize.getHeight() / 1.2);
-		
 		setSize(width, height);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		
 		setLocation(screenSize.width/2-getSize().width/2, screenSize.height/2-getSize().height/2);
-		
 		setLayout(null);
 		
 		//This is for background image
@@ -62,9 +68,6 @@ public class SelectionWindow extends JFrame {
         JLabel backgroundImage = new JLabel(background);
         backgroundImage.setLocation(width/2, height/2);
         backgroundImage.setBounds(0, 0, width, height);	
-        
-		JOptionPane.showMessageDialog(this, whoseTurn.getName());
-		
 		
 		//This is for the health bar
 		JProgressBar health = new JProgressBar();
@@ -75,7 +78,6 @@ public class SelectionWindow extends JFrame {
 		health.setMaximum(100);
 		health.setMinimum(0);
 		health.setBounds(40, 10, width/3, height/10);
-		add(health);
 		
 		//This is for power bar
 		JProgressBar power = new JProgressBar();
@@ -86,59 +88,121 @@ public class SelectionWindow extends JFrame {
 		power.setMaximum(20);
 		power.setMinimum(0);
 		power.setBounds((width/2)+20, 10, width/3, height/10);
-		add(power);
 		
+		//This is for the attack selection button
 		SelectionButton attack = new SelectionButton(ATTACK);
-		SelectionButton defend = new SelectionButton(DEFEND);
-		
 		attack.setBounds(80, 3*(height/4), width/4, height/6);
 		attack.setFont(new Font("Arial", Font.BOLD, 30));
 		attack.setText("ATTACK");
 		attack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// open attack window 
+				//Opens Popup to List of Attacks
 				JPopupMenu attackMenu = new JPopupMenu("Attack");
-				JMenuItem benzene = new JMenuItem("Benzene Start");
-				JMenuItem scheme2 = new JMenuItem("Scheme 2");
-				attackMenu.add(benzene);
-				attackMenu.add(scheme2);
-				benzene.addActionListener(new ActionListener() {
+				
+				//Once we have more attacks RNG goes here
+				//TODO Random number generator
+				//Spits out an array:
+				
+				int optionAttack[] = {0, 1};
+				
+				//Makes the random numbers into random moves from Moves class
+				JMenuItem attack1 = new JMenuItem(move.getAttackName(optionAttack[0]));
+				JMenuItem attack2 = new JMenuItem(move.getAttackName(optionAttack[1]));
+				// TODO Add more attacks
+		
+				//Adds attacks to menu
+				attackMenu.add(attack1);
+				attackMenu.add(attack2);
+				
+				//Action Listener for each attack
+				
+				//Attack 1
+				attack1.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						// Take to Benzene attack window
-						BattleWindow bw = new BattleWindow(playerOne, playerTwo, "trinitrotoluene", playerOne.isTurn());
+						BattleWindow bw = new BattleWindow(playerOne, playerTwo, move.getAttackChemical(0), playerOne.isTurn(), move.getGroupNum(0));
+						bw.setVisible(true);
+						SelectionWindow.this.dispose();
+					}	
+				});
+				
+				//Attack 2
+				attack2.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						BattleWindow bw = new BattleWindow(playerOne, playerTwo, move.getAttackChemical(1), playerOne.isTurn(), move.getGroupNum(1));
 						bw.setVisible(true);
 						SelectionWindow.this.dispose();
 
 					}	
 				});
-				attackMenu.setSize(width/5, height/5);
-				attackMenu.show(SelectionWindow.this, width/2, height/2);
 				
+				//Show attack menu when clicked upon
+				attackMenu.show(SelectionWindow.this, width/6, (height/3)+(height/2));
+				attackMenu.setSize(width/2, height/5);		
 			}	
 		});
 		
+		//This is for the defend selection button
+		SelectionButton defend = new SelectionButton(DEFEND);
 		defend.setBounds(4*(width/5) - 80, 3*(height/4), width/4, height/6);
 		defend.setFont(new Font("Arial", Font.BOLD, 30));
 		defend.setText("DEFEND");
 		defend.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// open defend window 	
 				JPopupMenu defendMenu = new JPopupMenu("Defend");
-				JMenuItem defendChemical = new JMenuItem("Defend Chemical");
-				defendMenu.add(defendChemical);
-				defendChemical.addActionListener(new ActionListener() {
+				
+				//Once we have more attacks RNG goes here
+				//TODO Random number generator
+				//Spits out an array:
+				
+				int optionDefend[] = {0, 1};
+				
+				//Makes the random numbers into random moves from Moves class
+				JMenuItem defend1 = new JMenuItem(move.getDefendName(optionDefend[0]));
+				JMenuItem defend2 = new JMenuItem(move.getDefendName(optionDefend[1]));
+				// TODO Add more defends
+		
+				//Adds defends to menu
+				defendMenu.add(defend1);
+				defendMenu.add(defend2);
+			
+				//Action Listener for each defend
+				
+				//Defend 1
+				defend1.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						// Open defend chemical window	
-					}
+						BattleWindow bw = new BattleWindow(playerOne, playerTwo, move.getDefendChemical(0), playerOne.isTurn(), move.getGroupNum(0));
+						bw.setVisible(true);
+						SelectionWindow.this.dispose();
+					}	
 				});
-				defendMenu.show(SelectionWindow.this, width/2, height/2);
+				
+				//Defend 2
+				defend2.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						BattleWindow bw = new BattleWindow(playerOne, playerTwo, move.getDefendChemical(1), playerOne.isTurn(), move.getGroupNum(1));
+						bw.setVisible(true);
+						SelectionWindow.this.dispose();
+
+					}	
+				});
+				
+				
+				//Show defend menu when clicked upon
+				defendMenu.show(SelectionWindow.this, (width/6)+(width/2), (height/3)+(height/2));
+				defendMenu.setSize(width/2, height/5);	
 			}
 		});
 		
+		//Add everything to the JFrame
+		JOptionPane.showMessageDialog(this, whoseTurn.getName());
+		add(power);
+		add(health);
 		add(attack);
 		add(defend);
 		add(backgroundImage);
