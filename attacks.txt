@@ -1,1 +1,2 @@
-Aniline BenezesulfonicAcid BenzoicAcid
+Aniline BenezesulfonicAcid BenzoicAcid Benzonitrile MChloronitrobenzene MDinitrobenzene MetanilicAcid Methylbromobenzene
+PBromotoluene PXylene Trinitrotoluene TWOPhenyl2Propanol 
