@@ -5,6 +5,8 @@ public class GameDriver {
 		int health = 100;
 		int power = 20;
 		boolean gameWon = false;
+		
+		AttackOptions attackOptions = new AttackOptions();
 	
 		PlayerOne playerOne = new PlayerOne(health, power, true, "Player One");
 		PlayerTwo playerTwo = new PlayerTwo(health, power, false, "Player Two");

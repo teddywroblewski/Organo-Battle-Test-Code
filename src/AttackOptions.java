@@ -12,6 +12,8 @@ public final class AttackOptions {
 	private static HashMap<String, Chemical> startingChemicals;
 
 	public AttackOptions() {
+		attackOptions = new HashSet<String>();
+		startingChemicals = new HashMap<String, Chemical>();
 		try {
 			Scanner textIn = new Scanner(new File("attacks.txt"));
 			Scanner textMapIn = new Scanner(new File("attackMap.txt"));
@@ -31,7 +33,16 @@ public final class AttackOptions {
 	}
 	
 	public static HashSet<String> getAcidAttacks() {
-		return null;
+		HashSet<String> ret = new HashSet<String>();
+		int i = 0;
+		for (String chem : attackOptions) {
+			ret.add(chem);
+			i++;
+			if (i == 5) {
+				break;
+			}
+		}
+		return ret;
 	}
 	
 	public static Chemical getStartChemical(String targetChemical) {

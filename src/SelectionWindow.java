@@ -41,6 +41,10 @@ public class SelectionWindow extends JFrame {
 	}
 
 	public SelectionWindow(PlayerOne playerOne, PlayerTwo playerTwo) {
+		
+		attackOptions = new HashSet<String>();
+		defendOptions = new HashSet<String>();
+		
 		if (playerOne.isTurn()) {
 			whoseTurn = playerOne;
 		} else {
