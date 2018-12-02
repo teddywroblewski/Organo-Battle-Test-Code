@@ -12,6 +12,8 @@ public final class AttackOptions {
 	private static HashMap<String, Chemical> startingChemicals;
 
 	public AttackOptions() {
+		attackOptions = new HashSet<String>();
+		startingChemicals = new HashMap<String, Chemical>();
 		try {
 			Scanner textIn = new Scanner(new File("attacks.txt"));
 			Scanner textMapIn = new Scanner(new File("attackMap.txt"));
