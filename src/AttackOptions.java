@@ -15,14 +15,16 @@ public final class AttackOptions {
 		attackOptions = new HashSet<String>();
 		startingChemicals = new HashMap<String, Chemical>();
 		try {
-			Scanner textIn = new Scanner(new File("attacks.txt"));
-			Scanner textMapIn = new Scanner(new File("attackMap.txt"));
+			Scanner textIn = new Scanner(new File("attacks.txt")).useDelimiter(",");
+			Scanner textMapIn = new Scanner(new File("attackMap.txt")).useDelimiter(",");
 			while (textIn.hasNext()) {
 				attackOptions.add(textIn.next());
 			}
 			while (textMapIn.hasNext()) {
 				String endChemical = textMapIn.next();
+				System.out.println(endChemical);
 				String starting = textMapIn.next();
+				System.out.println(starting);
 				Chemical startingChem = Chemical.getStartingChemical(starting);
 				startingChemicals.put(endChemical, startingChem);
 			}
