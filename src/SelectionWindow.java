@@ -66,7 +66,8 @@ public class SelectionWindow extends JFrame {
 
 		//Check if game is over
 		if (whoseTurn.getHealth() == 0) {
-
+			
+			//inner class to run background task while window is being made
 			class PopUpWindow extends SwingWorker<String,String> {
 
 				@Override
