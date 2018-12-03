@@ -15,6 +15,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JProgressBar;
+import javax.swing.SwingWorker;
 
 
 public class SelectionWindow extends JFrame {
@@ -41,10 +42,10 @@ public class SelectionWindow extends JFrame {
 	}
 
 	public SelectionWindow(PlayerOne playerOne, PlayerTwo playerTwo) {
-		
+
 		attackOptions = new HashSet<String>();
 		defendOptions = new HashSet<String>();
-		
+
 		if (playerOne.isTurn()) {
 			whoseTurn = playerOne;
 		} else {
@@ -63,6 +64,45 @@ public class SelectionWindow extends JFrame {
 
 		setLayout(null);
 
+		//Check if game is over
+		if (whoseTurn.getHealth() == 0) {
+
+			class PopUpWindow extends SwingWorker<String,String> {
+
+				@Override
+				protected String doInBackground() throws Exception {
+					Thread.sleep(500);
+					return whoseTurn.getName();
+				}
+				protected void done() {
+					try {
+						JOptionPane.showMessageDialog(SelectionWindow.this, "Game Over, " + this.get() + " Has Lost!");
+						SelectionWindow.this.dispose();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			new PopUpWindow().execute();
+		} else {
+			class PopUpWindow extends SwingWorker<String,String> {
+
+				@Override
+				protected String doInBackground() throws Exception {
+					Thread.sleep(500);
+					return whoseTurn.getName();
+				}
+				protected void done() {
+					try {
+						JOptionPane.showMessageDialog(SelectionWindow.this, this.get());
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			new PopUpWindow().execute();
+		}
+
 		//This is for background image
 		ImageIcon background = new ImageIcon("CGB.jpeg");
 		Image bg = background.getImage();
@@ -71,8 +111,6 @@ public class SelectionWindow extends JFrame {
 		JLabel backgroundImage = new JLabel(background);
 		backgroundImage.setLocation(width/2, height/2);
 		backgroundImage.setBounds(0, 0, width, height);	
-
-		JOptionPane.showMessageDialog(this, whoseTurn.getName());
 
 
 		//This is for the health bar
@@ -182,6 +220,7 @@ public class SelectionWindow extends JFrame {
 		add(attack);
 		add(defend);
 		add(backgroundImage);
+
 	}
 
 }

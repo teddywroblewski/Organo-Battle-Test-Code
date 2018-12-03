@@ -2,7 +2,7 @@
 public class GameDriver {
 
 	public static void main(String[] args) {
-		int health = 100;
+		int health = 10;
 		int power = 20;
 		boolean gameWon = false;
 		

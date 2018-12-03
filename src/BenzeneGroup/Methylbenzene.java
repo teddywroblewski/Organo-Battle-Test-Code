@@ -12,7 +12,6 @@ public class Methylbenzene extends Benzene {
 	@Override
 	public Chemical optionOne() {
 		// excessNitrofication
-		System.out.println("returning tri");
 		return new Trinitrotoluene();
 	}
 	@Override
