@@ -136,6 +136,7 @@ public class SelectionWindow extends JFrame {
 		power.setBounds((width/2)+20, 10, width/3, height/10);
 		add(power);
 
+		//Attack and Defend buttons
 		SelectionButton attack = new SelectionButton(ATTACK);
 		SelectionButton defend = new SelectionButton(DEFEND);
 
@@ -146,7 +147,6 @@ public class SelectionWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// open attack window 
-
 				int i = 0;
 				for(String chemcialOption : optionsForAttack) {
 					attackOptions.add(chemcialOption);
@@ -168,7 +168,6 @@ public class SelectionWindow extends JFrame {
 							bw.setVisible(true);
 							SelectionWindow.this.dispose();
 						}
-
 					});
 				}
 
@@ -185,7 +184,6 @@ public class SelectionWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// open defend window 	
-
 				int i = 0;
 				for(String chemcialOption : optionsForDefense) {
 					defendOptions.add(chemcialOption);
@@ -209,7 +207,6 @@ public class SelectionWindow extends JFrame {
 							bw.setVisible(true);
 							SelectionWindow.this.dispose();
 						}
-
 					});
 				}
 
