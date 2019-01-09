@@ -14,8 +14,6 @@ import javax.swing.JOptionPane;
 import BenzeneGroup.Benzene;
 import BenzeneGroup.Chemical;
 
-// have every reaction available to click, however if click one that does not work, fail and give error message
-// this allows us to keep only one window open 
 public class BattleWindow extends JFrame {
 
 	private Chemical chemical;
@@ -68,7 +66,6 @@ public class BattleWindow extends JFrame {
 		setLayout(null);
 		
 		//Implementing the first image and text 
-		
 		ImageIcon chemicalPic = new ImageIcon(chemical.getFile());
 		Image chemImage = chemicalPic.getImage();
 		Image temp = chemImage.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);
@@ -82,6 +79,8 @@ public class BattleWindow extends JFrame {
 		ReactionButton reactionTwo = new ReactionButton(2);
 		ReactionButton reactionThree = new ReactionButton(3);
 		ReactionButton reactionFour = new ReactionButton(4);
+		
+		//For each button press, reset all the buttons to the new reaction schemes
 		
 		//First Reaction Button
 		reactionOne.setBounds(10, (int)height-100, (int)width/5, (int)height/15);
@@ -111,7 +110,6 @@ public class BattleWindow extends JFrame {
 		add(reactionOne);
 		
 		//Second Reaction Button
-		
 		reactionTwo.setBounds((int)width/4 + 10, (int)height-100, (int)width/5, (int)height/15);
 		reactionTwo.setText(chemical.textOptionTwo());
 		reactionTwo.addActionListener(new ActionListener() {
