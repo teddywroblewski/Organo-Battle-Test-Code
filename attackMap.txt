@@ -1,1 +1,1 @@
-Aniline,Benzene,Benzenesulfonic Acid,Benzene,Benzoic Acid,Benzene,Benzonitrile,Benzene,m-Chloronitrobenzene,Benzene,m-Dinitrobenzene,Benzene,Metanilic Acid,Benzene,Methylbromobenzene,Benzene,p-Bromotoluene,Benzene,p-Xylene,Benzene,Trinitrotoluene,Benzene,2-Phenyl-2-Propanol,Benzene
+Aniline,Benzene,BenzenesulfonicAcid,Benzene,BenzoicAcid,Benzene,Benzonitrile,Benzene,MChloronitrobenzene,Benzene,MDinitrobenzene,Benzene,MetanilicAcid,Benzene,Methylbromobenzene,Benzene,PBromotoluene,Benzene,PXylene,Benzene,Trinitrotoluene,Benzene,TWOPhenyl3Propanol,Benzene
