@@ -5,8 +5,6 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
 
-import BenzeneGroup.Chemical;
-
 public final class AttackOptions {
 	
 	private static HashSet<String> attackOptions;

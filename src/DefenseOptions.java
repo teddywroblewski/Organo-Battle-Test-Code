@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
 
-import BenzeneGroup.Chemical;
-
 public final class DefenseOptions {
 	private HashSet<String> defenseOptions;
 	private static HashMap<String, Chemical> startingChemicals;

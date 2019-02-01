@@ -1,4 +1,4 @@
-package BenzeneGroup;
+
 
 
 public abstract class Chemical {

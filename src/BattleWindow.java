@@ -1,4 +1,5 @@
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -11,21 +12,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import BenzeneGroup.Benzene;
-import BenzeneGroup.Chemical;
-
 public class BattleWindow extends JFrame {
 
 	private Chemical chemical;
-	private String targetChemical;
+	private Chemical targetChemical;
 	private Player whoseGettingAttacked;
 	private Player whoseTurn;
 	private PlayerOne playerOne;
 	private PlayerTwo playerTwo;
 	private int width;
 	private int height;
-	private Image molecule;
-	
 	
 	private class ReactionButton extends JButton {
 		private int number;
@@ -58,7 +54,22 @@ public class BattleWindow extends JFrame {
 		
 		
 		chemical = startChemical;
-		this.targetChemical = targetChemical;
+		try 
+		{
+			Class cls =  Class.forName(targetChemical);
+			this.targetChemical = (Chemical) cls.newInstance();
+		} catch (ClassNotFoundException e) 
+        { 
+            e.printStackTrace(); 
+        } 
+        catch (InstantiationException e) 
+        { 
+            e.printStackTrace(); 
+        } 
+        catch (IllegalAccessException e) 
+        { 
+            e.printStackTrace(); 
+        } 
 		
 		setSize(width, height);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -70,10 +81,21 @@ public class BattleWindow extends JFrame {
 		Image chemImage = chemicalPic.getImage();
 		Image temp = chemImage.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);
 		chemicalPic = new ImageIcon(temp);
+		
+		ImageIcon targetPic = new ImageIcon(this.targetChemical.getFile());
+		Image chemTarget = targetPic.getImage();
+		Image tempTarget = chemTarget.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);
+		targetPic = new ImageIcon(tempTarget);
+		
         JLabel chemicalName = new JLabel(chemicalPic);
 		chemicalName.setText(chemical.getName());
 		chemicalName.setBounds(width/2 - width/6, height/2 - height/10, width/3, height/5);
 		add(chemicalName);
+		
+		JLabel targetNamePic = new JLabel(targetPic);
+		targetNamePic.setText(this.targetChemical.getName());
+		targetNamePic.setBounds(width/6, height/10, width/3, height/5);
+		add(targetNamePic);
 		
 		ReactionButton reactionOne = new ReactionButton(1);
 		ReactionButton reactionTwo = new ReactionButton(2);
@@ -85,7 +107,6 @@ public class BattleWindow extends JFrame {
 		//First Reaction Button
 		reactionOne.setBounds(10, (int)height-100, (int)width/5, (int)height/15);
 		reactionOne.setText(chemical.textOptionOne());
-		reactionOne.setFont(new Font("Arial", Font.PLAIN, 12));
 		reactionOne.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -199,7 +220,7 @@ public class BattleWindow extends JFrame {
 					break;
 		}
 		if (chemical.isFinal()) {
-			if (chemical.getName().equalsIgnoreCase(targetChemical)) {
+			if (chemical.getName().equalsIgnoreCase(targetChemical.getName())) {
 				
 				ImageIcon chemicalPicFinal = new ImageIcon(chemical.getFile());
 				Image chemImage = chemicalPicFinal.getImage();
