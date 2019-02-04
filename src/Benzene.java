@@ -28,7 +28,7 @@ public class Benzene extends Chemical {
 	@Override
 	public Chemical optionFour() {
 		// Sulfonation
-		return new BenezesulfonicAcid();
+		return new BenzenesulfonicAcid();
 	}
 	@Override
 	public String textOptionOne() {

@@ -18,7 +18,7 @@ public class Nitrobenzene extends Benzene {
 	@Override
 	public Chemical optionTwo() {
 		// Sulfonation
-		return new MetanilicAicd();
+		return new MetanilicAcid();
 	}
 	@Override
 	public Chemical optionThree() {

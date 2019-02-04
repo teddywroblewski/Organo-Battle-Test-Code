@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class BattleWindow extends JFrame {
-
+	
 	private Chemical chemical;
 	private Chemical targetChemical;
 	private Player whoseGettingAttacked;
