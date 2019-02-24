@@ -10,25 +10,25 @@ public class TwoMethyl2Butene extends Chemical {
 	}
 
 	@Override
-	public Chemical optionOne() {
+	public Chemical optionOne() { //19
 		// Hydrogen bromination
 		return new TwoBromo3MethylButane();
 	}
 
 	@Override
-	public Chemical optionTwo() {
+	public Chemical optionTwo() { //20
 		// Oxymurcueration and oxidation
 		return new TwoMethyl2Butanol();
 	}
 
 	@Override
-	public Chemical optionThree() {
+	public Chemical optionThree() { // 21
 		// Hydroboration
 		return new ThreeMethyl2Butanol();
 	}
 
 	@Override
-	public Chemical optionFour() {
+	public Chemical optionFour() { // 22
 		// Ozanalysis
 		return new AcetoneAndAcetaldehyde();
 	}

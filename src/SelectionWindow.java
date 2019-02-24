@@ -116,7 +116,7 @@ public class SelectionWindow extends JFrame {
 		backgroundImage.setLocation(width/2, height/2);
 		backgroundImage.setBounds(0, 0, width, height);	
 		
-		//This is for the scientist bro
+		//This is for the scientist bro // Teddy fix at some point
 		ImageIcon scientist = new ImageIcon("scientist.png");
 		Image sci = scientist.getImage();
 		Image temp2 = sci.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH);
