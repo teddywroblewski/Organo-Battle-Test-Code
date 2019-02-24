@@ -30,7 +30,7 @@ public class TwoBromo3MethylButane extends TwoMethyl2Butene {
 	@Override
 	public Chemical optionFour() {
 		// reduction
-		return new 2Methyl2Butene();
+		return new TwoMethyl2Butene();
 	}
 
 	@Override
