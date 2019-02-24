@@ -2,7 +2,7 @@
 public class TwoMethyl2Butene extends Chemical {
 	
 	public TwoMethyl2Butene() {
-		super("TwoMethyl2Butene", false, "18.jpg");
+		super("TwoMethyl2Butene", false, "18.jpeg");
 	}
 	
 	public TwoMethyl2Butene(String name, boolean isFinal, String pictureFile) {
