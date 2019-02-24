@@ -2,7 +2,7 @@
 public class TwoMethyl2Butene extends Chemical {
 	
 	public TwoMethyl2Butene() {
-		super("TwoMethyl2Butene", false, "18.jpg");
+		super("TwoMethyl2Butene", false, "18.jpeg");
 	}
 	
 	public TwoMethyl2Butene(String name, boolean isFinal, String pictureFile) {
@@ -10,25 +10,25 @@ public class TwoMethyl2Butene extends Chemical {
 	}
 
 	@Override
-	public Chemical optionOne() { //19
+	public Chemical optionOne() {
 		// Hydrogen bromination
 		return new TwoBromo3MethylButane();
 	}
 
 	@Override
-	public Chemical optionTwo() { //20
+	public Chemical optionTwo() {
 		// Oxymurcueration and oxidation
 		return new TwoMethyl2Butanol();
 	}
 
 	@Override
-	public Chemical optionThree() { // 21
+	public Chemical optionThree() {
 		// Hydroboration
 		return new ThreeMethyl2Butanol();
 	}
 
 	@Override
-	public Chemical optionFour() { // 22
+	public Chemical optionFour() {
 		// Ozanalysis
 		return new AcetoneAndAcetaldehyde();
 	}
