@@ -1,4 +1,4 @@
-package BenzeneGroup;
+
 
 public class TWOPhenyl2Propanol extends PhenylmagnesiumBromide {
 	

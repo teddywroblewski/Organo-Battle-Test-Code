@@ -1,4 +1,4 @@
-package BenzeneGroup;
+
 
 public class PhenylmagnesiumBromide extends Bromobenzene {
 
