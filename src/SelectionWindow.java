@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.util.HashSet;
 
 import javax.swing.ImageIcon;
@@ -16,6 +17,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JProgressBar;
 import javax.swing.SwingWorker;
+
+import com.sun.tools.javadoc.Main;
 
 
 public class SelectionWindow extends JFrame {
@@ -112,6 +115,15 @@ public class SelectionWindow extends JFrame {
 		JLabel backgroundImage = new JLabel(background);
 		backgroundImage.setLocation(width/2, height/2);
 		backgroundImage.setBounds(0, 0, width, height);	
+		
+		//This is for the scientist bro
+		ImageIcon scientist = new ImageIcon("scientist.png");
+		Image sci = scientist.getImage();
+		Image temp2 = sci.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH);
+		scientist = new ImageIcon(temp2);  // transform it back
+		JLabel scientistLabel = new JLabel(scientist);
+		scientistLabel.setLocation(width/2, height/2);
+		scientistLabel.setBounds(0, 0, width, height);	
 
 
 		//This is for the health bar
