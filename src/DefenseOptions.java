@@ -12,9 +12,7 @@ public final class DefenseOptions {
 	public DefenseOptions() {
 		defenseOptions = new HashSet<String>();
 		startingChemicals = new HashMap<String, Chemical>();
-		
 		try {
-			
 			Scanner textIn = new Scanner(new File("defenses.txt")).useDelimiter(",");
 			Scanner textMapIn = new Scanner(new File("defenseMap.txt")).useDelimiter(",");
 			while (textIn.hasNext()) {
@@ -35,7 +33,7 @@ public final class DefenseOptions {
 		HashSet<String> ret = new HashSet<String>();
 		int size = defenseOptions.size();
 		int randTarget = 0;
-		if (randTarget > 5){
+		if (size > 5) {
 			randTarget = new Random().nextInt(defenseOptions.size() - 5);
 		}
 		int i = 0;
@@ -58,3 +56,4 @@ public final class DefenseOptions {
 		return startingChemicals.get(targetChemical);
 	}
 }
+

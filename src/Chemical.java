@@ -32,7 +32,7 @@ public abstract class Chemical {
 	public static Chemical getStartingChemical(String startingChemical) {
 		if (startingChemical.equals("Benzene")) {
 			return new Benzene();
-		}else if(startingChemical.equals("TwoMethyl2Butene")){
+		} else if (startingChemical.equals("TwoMethyl2Butene")) {
 			return new TwoMethyl2Butene();
 		}
 		
