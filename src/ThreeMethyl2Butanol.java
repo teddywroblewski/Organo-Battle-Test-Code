@@ -1,7 +1,7 @@
 
 public class ThreeMethyl2Butanol extends TwoMethyl2Butene {
 	public ThreeMethyl2Butanol() {
-		super("ThreeMethyl2Butanol", false, "21.jpg");
+		super("ThreeMethyl2Butanol", false, "21.jpeg");
 	}
 	
 	public ThreeMethyl2Butanol(String name, boolean isFinal, String pictureFile) {
