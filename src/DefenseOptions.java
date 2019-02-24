@@ -2,10 +2,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Scanner;
 
 public final class DefenseOptions {
-	private HashSet<String> defenseOptions;
+	private static HashSet<String> defenseOptions;
 	private static HashMap<String, Chemical> startingChemicals;
 
 	public DefenseOptions() {
@@ -27,7 +28,22 @@ public final class DefenseOptions {
 	}
 	
 	public static HashSet<String> getAntiInflamatoryDefenses() {
-		return null;
+		HashSet<String> ret = new HashSet<String>();
+		int randTarget = new Random().nextInt(defenseOptions.size() - 5);
+		int i = 0;
+		int j = 0;
+		for (String chem : defenseOptions) {
+			if (i == randTarget) {
+				ret.add(chem);
+				randTarget++;
+				j++;
+			}
+			i++;
+			if (j == 5) {
+				break;
+			}
+		}
+		return ret;
 	}
 	
 	public static Chemical getStartingChemical(String targetChemical) {
