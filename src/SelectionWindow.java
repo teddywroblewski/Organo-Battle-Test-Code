@@ -18,9 +18,6 @@ import javax.swing.JPopupMenu;
 import javax.swing.JProgressBar;
 import javax.swing.SwingWorker;
 
-import com.sun.tools.javadoc.Main;
-
-
 public class SelectionWindow extends JFrame {
 
 	static final int ATTACK = 1;

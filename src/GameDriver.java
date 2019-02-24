@@ -7,6 +7,7 @@ public class GameDriver {
 		boolean gameWon = false;
 		
 		AttackOptions attackOptions = new AttackOptions();
+		DefenseOptions defenseOptions = new DefenseOptions();
 		
 		PlayerOne playerOne = new PlayerOne(health, power, true, "Player One");
 		PlayerTwo playerTwo = new PlayerTwo(health, power, false, "Player Two");
