@@ -208,7 +208,6 @@ public class SelectionWindow extends JFrame {
 					JMenuItem itemOption = new JMenuItem(chemicalOption + " Target");
 					defenseMenu.add(itemOption);
 					itemOption.addActionListener(new ActionListener() {
-						private String chemicalOption;
 
 						@Override
 						public void actionPerformed(ActionEvent arg0) {
