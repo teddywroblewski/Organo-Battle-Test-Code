@@ -35,7 +35,7 @@ public class TwoMethyl2Butene extends Chemical {
 
 	@Override
 	public String textOptionOne() {
-		return "Hydrogen Bromide";
+		return "Hydrogenbromination";
 	}
 
 	@Override
@@ -45,7 +45,7 @@ public class TwoMethyl2Butene extends Chemical {
 
 	@Override
 	public String textOptionThree() {
-		return "Hydrogenbromination";
+		return "Hydroboration";
 	}
 
 	@Override

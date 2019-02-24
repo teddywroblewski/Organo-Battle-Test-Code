@@ -10,9 +10,13 @@ public final class DefenseOptions {
 	private static HashMap<String, Chemical> startingChemicals;
 
 	public DefenseOptions() {
+		defenseOptions = new HashSet<String>();
+		startingChemicals = new HashMap<String, Chemical>();
+		
 		try {
-			Scanner textIn = new Scanner(new File("defenses.txt"));
-			Scanner textMapIn = new Scanner(new File("defenseMap.txt"));
+			
+			Scanner textIn = new Scanner(new File("defenses.txt")).useDelimiter(",");
+			Scanner textMapIn = new Scanner(new File("defenseMap.txt")).useDelimiter(",");
 			while (textIn.hasNext()) {
 				defenseOptions.add(textIn.next());
 			}
@@ -29,7 +33,11 @@ public final class DefenseOptions {
 	
 	public static HashSet<String> getAntiInflamatoryDefenses() {
 		HashSet<String> ret = new HashSet<String>();
-		int randTarget = new Random().nextInt(defenseOptions.size() - 5);
+		int size = defenseOptions.size();
+		int randTarget = 0;
+		if (randTarget > 5){
+			randTarget = new Random().nextInt(defenseOptions.size() - 5);
+		}
 		int i = 0;
 		int j = 0;
 		for (String chem : defenseOptions) {
