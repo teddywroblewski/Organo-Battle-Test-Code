@@ -150,27 +150,14 @@ public class SelectionWindow extends JFrame {
 		backgroundImage.setLocation(width / 2, height / 2);
 		backgroundImage.setBounds(0, 0, width, height);
 
-		// This is for the scientist bro
-		ImageIcon scientist = new ImageIcon("scientist.jpeg");
-		Image sci = scientist.getImage();
-		Image temp2 = sci.getScaledInstance(width / 2, height / 2, java.awt.Image.SCALE_SMOOTH);
-		scientist = new ImageIcon(temp2); // transform it back
-		JLabel scientistImage = new JLabel(scientist);
-		scientistImage.setBounds(0, 0, width, height + height / 2);
+//		// Scientist Avatar JLabel for Future Work
+//		ImageIcon scientist = new ImageIcon("scientist.jpeg");
+//		Image sci = scientist.getImage();
+//		Image temp2 = sci.getScaledInstance(width / 2, height / 2, java.awt.Image.SCALE_SMOOTH);
+//		scientist = new ImageIcon(temp2); // transform it back
+//		JLabel scientistImage = new JLabel(scientist);
+//		scientistImage.setBounds(0, 0, width, height + height / 2);
 
-		// Teddy Working on Animation
-//		EventQueue.invokeLater(new Runnable() {
-//			@Override
-//			public void run() {
-//				try {
-//					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-//						| UnsupportedLookAndFeelException ex) {
-//					ex.printStackTrace();
-//				}
-//				ScientistAnimation sci = new ScientistAnimation();
-//			}
-//		});
 
 		// This is for the health bar
 		JProgressBar health = new JProgressBar();
@@ -279,7 +266,6 @@ public class SelectionWindow extends JFrame {
 			add(attack);
 		}
 		add(defend);
-		add(scientistImage);
 		add(backgroundImage);
 		
 
