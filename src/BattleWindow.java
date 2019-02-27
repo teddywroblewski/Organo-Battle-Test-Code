@@ -22,6 +22,7 @@ public class BattleWindow extends JFrame {
 	private PlayerTwo playerTwo;
 	private int width;
 	private int height;
+	private Chemical startChemical;
 	
 	private class ReactionButton extends JButton {
 		private int number;
@@ -52,7 +53,7 @@ public class BattleWindow extends JFrame {
 			this.playerOne.setTurn(true);
 		}
 		
-		
+		this.startChemical = startChemical;
 		chemical = startChemical;
 		try 
 		{
@@ -229,7 +230,12 @@ public class BattleWindow extends JFrame {
 				
 				JOptionPane.showMessageDialog(this, "Sucessfully made " + chemical.getName(), "Sucess", JOptionPane.INFORMATION_MESSAGE, chemicalPicFinal);
 				
-				whoseGettingAttacked.setHealth(whoseGettingAttacked.getHealth() - 10);
+				if (startChemical.getName() == "Benzene") {
+					whoseGettingAttacked.setHealth(whoseGettingAttacked.getHealth() - 10);
+				} else if (startChemical.getName() == "TwoMethyl2Butene") {
+					whoseTurn.setPower(whoseTurn.getPower() + 2);
+					whoseTurn.setHealth(whoseTurn.getHealth() + 5);
+				}
 				new SelectionWindow(playerOne, playerTwo).setVisible(true);
 				BattleWindow.this.dispose();
 			}
