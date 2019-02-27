@@ -52,7 +52,6 @@ public class SelectionWindow extends JFrame {
 			whoseTurn = playerTwo;
 		}
 
-
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		width = (int)screenSize.getWidth() / 2;
 		height = (int)(screenSize.getHeight() / 1.2);
@@ -65,7 +64,7 @@ public class SelectionWindow extends JFrame {
 		setLayout(null);
 
 		//Check if game is over
-		if (whoseTurn.getHealth() == 0) {
+		if (whoseTurn.getHealth() <= 0) {
 			
 			//inner class to run background task while window is being made
 			class PopUpWindow extends SwingWorker<String,String> {
@@ -78,13 +77,38 @@ public class SelectionWindow extends JFrame {
 				protected void done() {
 					try {
 						JOptionPane.showMessageDialog(SelectionWindow.this, "Game Over, " + this.get() + " Has Lost!");
-						SelectionWindow.this.dispose();
+						JPopupMenu endOfGame = new JPopupMenu("Game Over");
+						JMenuItem playAgain = new JMenuItem("Play Again?");
+						JMenuItem exitGame = new JMenuItem("Exit");
+						endOfGame.add(playAgain);
+						endOfGame.add(exitGame);
+						playAgain.addActionListener(new ActionListener() {
+
+							@Override
+							public void actionPerformed(ActionEvent arg0) {
+								PlayerOne player1 = new PlayerOne(100, 10, true, "Player One");
+								PlayerTwo player2 = new PlayerTwo(100, 10, false, "Player Two");
+								OpeningWindow ow = new OpeningWindow(player1, player2);
+								ow.setVisible(true);
+								SelectionWindow.this.dispose();
+							}
+						});
+						exitGame.addActionListener(new ActionListener() {
+
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								SelectionWindow.this.dispose();			
+							}
+						});
+						endOfGame.setSize(height/3, width/3);
+						endOfGame.show(SelectionWindow.this, width/2, height/2);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
 				}
 			}
 			new PopUpWindow().execute();
+			
 		} else {
 			class PopUpWindow extends SwingWorker<String,String> {
 
@@ -96,6 +120,7 @@ public class SelectionWindow extends JFrame {
 				protected void done() {
 					try {
 						JOptionPane.showMessageDialog(SelectionWindow.this, this.get());
+						
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -140,7 +165,7 @@ public class SelectionWindow extends JFrame {
 		power.setString("Power");
 		power.setForeground(new Color(255, 255, 0));
 		power.setValue(whoseTurn.getPower());
-		power.setMaximum(20);
+		power.setMaximum(10);
 		power.setMinimum(0);
 		power.setBounds((width/2)+20, 10, width/3, height/10);
 		add(power);
@@ -223,7 +248,9 @@ public class SelectionWindow extends JFrame {
 			}
 		});
 
-		add(attack);
+		if (whoseTurn.getPower() > 0) {
+			add(attack);
+		}
 		add(defend);
 		add(backgroundImage);
 

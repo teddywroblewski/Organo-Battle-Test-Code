@@ -2,8 +2,8 @@
 public class GameDriver {
 
 	public static void main(String[] args) {
-		int health = 50;
-		int power = 20;
+		int health = 20;
+		int power = 5;
 		boolean gameWon = false;
 		
 		AttackOptions attackOptions = new AttackOptions();
