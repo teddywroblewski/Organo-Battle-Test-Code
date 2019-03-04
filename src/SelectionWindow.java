@@ -60,7 +60,11 @@ public class SelectionWindow extends JFrame {
 		} else {
 			whoseTurn = playerTwo;
 		}
-
+		if (whoseTurn.getPower() < 0) {
+			whoseTurn.setPower(0);
+		} else if (whoseTurn.getPower() > 10) {
+			whoseTurn.setPower(10);
+		}
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		width = (int) screenSize.getWidth() / 2;
 		height = (int) (screenSize.getHeight() / 1.2);

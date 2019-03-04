@@ -233,7 +233,7 @@ public class BattleWindow extends JFrame {
 				if (startChemical.getName() == "Benzene") {
 					whoseGettingAttacked.setHealth(whoseGettingAttacked.getHealth() - 10);
 				} else if (startChemical.getName() == "TwoMethyl2Butene") {
-					whoseTurn.setPower(whoseTurn.getPower() + 2);
+					whoseTurn.setPower(whoseTurn.getPower() + 10);
 					whoseTurn.setHealth(whoseTurn.getHealth() + 5);
 				}
 				new SelectionWindow(playerOne, playerTwo).setVisible(true);
